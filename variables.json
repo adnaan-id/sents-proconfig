@@ -1,0 +1,91 @@
+{
+        "id": "LearningInputs",
+        "type": "automata",
+        "initial": "ground-zero",
+        "states": {
+                "ground-zero": {
+                        "inputs": {
+                                "username": {
+                                        "type": "text",
+                                        "user-input": true
+                                        }
+                                },
+                        "render": {
+                                "text": "Hello there, {{username}}! How are you feeling today?",
+                                "buttons": [
+                                        {
+                                                "content": "Great! 😃",
+                                                "description": "Positive",
+                                                "on_click": "good-event"
+                                                },
+                                        {
+                                                "content": "Sad 😔",
+                                                "description": "Negative",
+                                                "on_click": "bad-event"
+                                                },
+                                        {
+                                                "content": "neutral",
+                                                "description": "feeling neutral",
+                                                "on_click": "ntr-event"
+                                                }
+                                        ]
+                                },
+                        "transitions": {
+                                "good-event": "ground-one",
+                                "bad-event": "ground-two",
+                                "ntr-event": "ground-three"
+                                }
+                        },
+                "ground-one": {
+                        "inputs": {
+                                "reason": {
+                                        "type": "text",
+                                        "user_input": true
+                                        }
+                                },
+                        "render": {
+                                "text": "could that be because you {{reason}}?",
+                                "buttons": [
+                                        {
+                                                "content": "Yes",
+                                                "description": "",
+                                                "on_click": "sub-0"
+                                        },
+                                        {
+                                                "content": "no",
+                                                "description": "",
+                                                "on_click":"sub-1"
+                                        }
+                                ]
+                        },
+                        "transitions": {
+                                "sub-0": "sub-zero",
+                                "sub-1": "sub-one"
+                        }
+                },
+                "ground-two":{},
+                "ground-three": {},
+                "sub-zero":{
+                        "render": {
+                                "text": "Great! Spend wisely. What do you plan on buying?",
+                                "buttons": [
+                                        {
+                                                "content": "Feeling Different?",
+                                                "description": "takes you to ground-zero",
+                                                "on_click": "home"
+                                        },
+                                        {
+                                                "content": "Books",
+                                                "description": "",
+                                                "on_click": "books-state"
+}
+                                ]
+                        },
+                        "transitions": {
+                                "home": "ground-zero",
+				"books-state": "ground-zero"
+                        }
+                },
+		"sub-one":{}
+        }
+}
